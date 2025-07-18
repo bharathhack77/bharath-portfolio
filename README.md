@@ -1,1 +1,235 @@
-# bharath-portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bharath Kumar | Portfolio</title>
+    <style>
+        body {
+            background: #f0f6ff;
+            color: #22223b;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        header {
+            background: #3b82f6;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.15);
+            padding: 1rem;
+        }
+        header h1 {
+            color: #fff;
+        }
+        nav a {
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #22223b;
+        }
+        .hero {
+            background: #e6f0fd;
+            box-shadow: 0 4px 24px rgba(59,130,246,0.08);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .hero h2 {
+            color: #3b82f6;
+        }
+        .hero span {
+            font-weight: bold;
+            color: #3b82f6;
+        }
+        .hero .github,
+        .hero .linkedin {
+            background: #3b82f6;
+            color: #fff;
+        }
+        .hero .github:hover,
+        .hero .linkedin:hover {
+            background: #2563eb;
+        }
+        section {
+            border-radius: 1rem;
+            box-shadow: 0 2px 16px rgba(59,130,246,0.07);
+            margin-top: 2rem;
+            padding: 2.5rem 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #fff;
+        }
+        section.bg1,
+        section.bg2 {
+            background: #e6f0fd;
+        }
+        h3 {
+            margin-bottom: 1rem;
+            color: #3b82f6;
+        }
+        .project-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 12px rgba(59,130,246,0.08);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+        .project-card:hover {
+            box-shadow: 0 6px 24px rgba(59,130,246,0.18);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .skills-card,
+        .skills-card.soft {
+            background: #e6f0fd;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: 0 1px 8px rgba(59,130,246,0.08);
+        }
+        footer {
+            background: #2563eb;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2.5rem;
+            border-radius: 1rem 1rem 0 0;
+            box-shadow: 0 -2px 16px rgba(59,130,246,0.12);
+        }
+        @media (max-width: 700px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            section {
+                padding: 1.2rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <h1 style="font-size:2rem; font-weight:800;">Bharath Kumar J M</h1>
+            <nav style="display:inline-block;">
+                <a href="#about" style="margin-right:1.2rem;">About</a>
+                <a href="#projects" style="margin-right:1.2rem;">Projects</a>
+                <a href="#skills" style="margin-right:1.2rem;">Skills</a>
+                <a href="#education" style="margin-right:1.2rem;">Education</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h2 style="font-size:2.2rem; font-weight:800;">Aspiring Software Developer</h2>
+        <p style="font-size:1.2rem; color:#22223b;">
+            Crafting user-friendly applications with 
+            <span>HTML</span>, 
+            <span>CSS</span>, 
+            <span>JS</span> & 
+            <span>React</span>
+        </p>
+        <div style="margin-top:1.5rem;">
+            <a href="https://github.com/bharathhack77" class="github" style="display:inline-block; margin-right:1rem; padding:0.6rem 1.5rem; border-radius:999px; box-shadow:0 2px 8px rgba(17,24,39,0.12); text-decoration:none;">GitHub</a>
+            <a href="http://www.linkedin.com/in/bharath-kumar-8a2481254" class="linkedin" style="display:inline-block; padding:0.6rem 1.5rem; border-radius:999px; box-shadow:0 2px 8px rgba(37,99,235,0.12); text-decoration:none;">LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h3 style="font-size:1.5rem; font-weight:700;">About Me</h3>
+        <p>
+            I’m <span style="font-weight:600;">Bharath Kumar</span>, currently pursuing B.E. in Cyber Security. I’m passionate about front-end development and aspire to build efficient, secure, and engaging applications. My goal is to grow as a software developer, learning continuously and building impactful tech solutions.
+        </p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="bg1">
+        <h3 style="font-size:1.5rem; font-weight:700;">Projects</h3>
+        <div>
+            <div class="project-card">
+                <h4 style="font-size:1.2rem; font-weight:600; color:#3b82f6;">School Management System</h4>
+                <p>Created a web app to manage student attendance, generate reports, and send email alerts. Reduced manual effort by 50%.</p>
+                <p style="font-size:0.95rem; color:#22223b;">Tech Stack: 
+                    <span>HTML</span>, 
+                    <span>CSS</span>, 
+                    <span>JavaScript</span>
+                </p>
+            </div>
+            <div class="project-card">
+                <h4 style="font-size:1.2rem; font-weight:600; color:#3b82f6;">Snake Game</h4>
+                <p>A browser-based snake game built with HTML5 Canvas and JavaScript. Focused on game logic and smooth animations.</p>
+                <p style="font-size:0.95rem; color:#22223b;">Tech Stack: 
+                    <span>HTML</span>, 
+                    <span>CSS</span>, 
+                    <span>JavaScript</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h3 style="font-size:1.5rem; font-weight:700;">Skills</h3>
+        <div class="skills-grid">
+            <div class="skills-card">
+                <h4 style="font-weight:600;">Technical Skills</h4>
+                <ul style="margin-left:1.2rem; list-style:disc;">
+                    <li>C, C++, Java (Basic)</li>
+                    <li>HTML, CSS, JavaScript, React.js</li>
+                    <li>Node.js, MySQL</li>
+                    <li>Networking, Git, Excel</li>
+                </ul>
+            </div>
+            <div class="skills-card soft">
+                <h4 style="font-weight:600;">Soft Skills</h4>
+                <ul style="margin-left:1.2rem; list-style:disc;">
+                    <li>Team Management</li>
+                    <li>Problem Solving</li>
+                    <li>Collaboration</li>
+                    <li>Adaptability</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="bg2">
+        <h3 style="font-size:1.5rem; font-weight:700;">Education</h3>
+        <ul style="margin-left:1.2rem; list-style:disc;">
+            <li><span style="font-weight:600;">BE - Cyber Security</span>, Karpagam Academy (2026), CGPA: 7.0*</li>
+            <li><span style="font-weight:600;">HSC</span> - VIB Matric Hr. Sec. School, 51%</li>
+            <li><span style="font-weight:600;">SSLC</span> - VIB Matric Hr. Sec. School, 54%</li>
+        </ul>
+    </section>
+
+    <!-- Certificates & Internship -->
+    <section>
+        <h3 style="font-size:1.5rem; font-weight:700;">Certificates & Internship</h3>
+        <ul style="margin-left:1.2rem; list-style:disc;">
+            <li><span style="font-weight:600;">Internship:</span> Front-end at Pantech e-learning (15 days)</li>
+            <li>C, C++, Python - May 2022</li>
+            <li>Python - Infosys Springboard (2023)</li>
+            <li>Java - Scaler (2025)</li>
+            <li>HTML - Simplilearn (2025)</li>
+            <li>CEH - Certified (2023)</li>
+            <li>SQL - Scaler (2025)</li>
+        </ul>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="hero" style="margin-top:2rem;">
+        <h3 style="font-size:1.5rem; font-weight:700;">Contact Me</h3>
+        <p>Email: <a href="mailto:kumarbharath9537@gmail.com" style="color:#3b82f6; text-decoration:underline; font-weight:600;">kumarbharath9537@gmail.com</a></p>
+        <p>Phone: <span style="color:#3b82f6; font-weight:600;">+91 63810 50448</span></p>
+    </section>
+
+    <footer>
+        &copy; 2025 Bharath Kumar. All rights reserved.
+    </footer>
+</body>
+</html>
