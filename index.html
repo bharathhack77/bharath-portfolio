@@ -4,107 +4,171 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bharath Kumar | Portfolio</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- AOS library for scroll animations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <style>
         body {
-            background: #f0f6ff;
+            background: linear-gradient(-45deg, #f0f6ff, #e6f0fd, #dbeafe, #bfdbfe);
+            background-size: 700% 700%;
+            animation: gradientBG 18s ease infinite;
             color: #22223b;
             font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        @keyframes gradientBG {
+            0% {background-position:0% 50%;}
+            50% {background-position:100% 50%;}
+            100% {background-position:0% 50%;}
         }
         header {
             background: #3b82f6;
             box-shadow: 0 2px 8px rgba(59,130,246,0.15);
             padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background .2s;
         }
         header h1 {
             color: #fff;
+            font-size:2rem; 
+            font-weight:800;
         }
         nav a {
             color: #fff;
             font-weight: 600;
             transition: color 0.2s;
+            margin-right:1.2rem;
+            text-decoration: none;
         }
+        nav a:last-child {margin-right:0;}
         nav a:hover {
             color: #22223b;
         }
         .hero {
-            background: #e6f0fd;
+            background: #e6f0fdcc;
             box-shadow: 0 4px 24px rgba(59,130,246,0.08);
-            padding: 3rem 0;
+            padding: 3.2rem 0 2.5rem 0;
             text-align: center;
+            position: relative;
+            margin-bottom: 0;
         }
         .hero h2 {
             color: #3b82f6;
+            font-size:2.3rem;
+            font-weight:800;
+            margin-bottom: .7rem;
+        }
+        .hero .sub-typing {
+            font-size: 1.13rem;
+            color: #1e293b;
+            min-height: 1.28em;
+            margin-bottom: 1rem;
+            font-family: 'Fira Mono', monospace, monospace;
+            letter-spacing: 0.7px;
         }
         .hero span {
             font-weight: bold;
             color: #3b82f6;
         }
-        .hero .github,
-        .hero .linkedin {
+        .hero .github, .hero .linkedin {
             background: #3b82f6;
             color: #fff;
+            display:inline-block;
+            margin:0 0.6rem;
+            padding:0.6rem 1.5rem;
+            border-radius:999px;
+            box-shadow:0 2px 8px rgba(17,24,39,0.12);
+            text-decoration:none;
+            font-weight: 600;
+            transition: background .2s, transform .17s;
+            font-size: 1.11rem;
         }
-        .hero .github:hover,
-        .hero .linkedin:hover {
+        .hero .github:hover, .hero .linkedin:hover {
             background: #2563eb;
+            transform: translateY(-2px) scale(1.05);
         }
         section {
             border-radius: 1rem;
-            box-shadow: 0 2px 16px rgba(59,130,246,0.07);
-            margin-top: 2rem;
+            box-shadow: 0 6px 40px rgba(59,130,246,0.10);
+            margin-top: 2.3rem;
             padding: 2.5rem 1.5rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             background: #fff;
         }
-        section.bg1,
-        section.bg2 {
+        section.bg1, section.bg2 {
             background: #e6f0fd;
         }
         h3 {
-            margin-bottom: 1rem;
+            border-left: 5px solid #3b82f6;
+            padding-left: .7em;
             color: #3b82f6;
+            font-size:1.5rem;
+            font-weight:700;
+            margin-bottom:1.35rem;
+            margin-top:.34rem;
         }
         .project-card {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.96);
             border-radius: 0.75rem;
             box-shadow: 0 2px 12px rgba(59,130,246,0.08);
-            padding: 1rem;
+            padding: 1rem 1.2rem;
             margin-bottom: 1.5rem;
-            transition: box-shadow 0.2s;
+            transition: box-shadow 0.2s, transform .23s;
+            position: relative;
         }
         .project-card:hover {
-            box-shadow: 0 6px 24px rgba(59,130,246,0.18);
+            box-shadow: 0 10px 32px rgba(59,130,246,0.15);
+            transform: translateY(-6px) scale(1.03) rotate(-1deg);
         }
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
         }
-        .skills-card,
-        .skills-card.soft {
+        .skills-card, .skills-card.soft {
             background: #e6f0fd;
             border-radius: 0.75rem;
-            padding: 1rem;
+            padding: 1rem 1.25rem;
             box-shadow: 0 1px 8px rgba(59,130,246,0.08);
+            transition: box-shadow 0.2s, transform .2s;
         }
+        .skills-card:hover, .skills-card.soft:hover {
+            box-shadow: 0 6px 32px rgba(59,130,246,0.10);
+            transform: scale(1.025) translateY(-3px);
+        }
+        ul {padding-left:1.2em;}
+        li {margin-bottom:0.25em;}
         footer {
             background: #2563eb;
             color: #fff;
             text-align: center;
-            padding: 1rem;
+            padding: 1.17rem 0;
             margin-top: 2.5rem;
             border-radius: 1rem 1rem 0 0;
             box-shadow: 0 -2px 16px rgba(59,130,246,0.12);
+            font-size: 1.1rem;
+            letter-spacing: 0.4px;
+        }
+        /* For icons inside contact and project/skills sections */
+        .fa-li {
+            color:#3b82f6;
+            margin-right:.42em;
+        }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            section, .hero {max-width:97vw;}
+            .skills-grid {grid-template-columns: 1fr;}
+            header > div {flex-direction:column; gap:.6rem;}
+            header{padding:1.1rem .3rem;}
         }
         @media (max-width: 700px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            section {
-                padding: 1.2rem 0.5rem;
-            }
+            nav a {margin-right:.55rem; font-size:1.03rem;}
+            section {padding:1.2rem .2rem;}
+            .hero {padding:2.3rem .1rem 1.3rem .1rem;}
         }
     </style>
 </head>
@@ -112,21 +176,24 @@
     <!-- Header -->
     <header>
         <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-            <h1 style="font-size:2rem; font-weight:800;">Bharath Kumar J M</h1>
-            <nav style="display:inline-block;">
-                <a href="#about" style="margin-right:1.2rem;">About</a>
-                <a href="#projects" style="margin-right:1.2rem;">Projects</a>
-                <a href="#skills" style="margin-right:1.2rem;">Skills</a>
-                <a href="#education" style="margin-right:1.2rem;">Education</a>
+            <h1>Bharath Kumar J M</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
                 <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero -->
-    <section class="hero">
-        <h2 style="font-size:2.2rem; font-weight:800;">Aspiring Software Developer</h2>
-        <p style="font-size:1.2rem; color:#22223b;">
+    <section class="hero" data-aos="fade-down">
+        <h2>Aspiring Software Developer</h2>
+        <p class="sub-typing">
+            <span id="text-typing"></span>
+        </p>
+        <p style="font-size:1.1rem; color:#22223b;">
             Crafting user-friendly applications with 
             <span>HTML</span>, 
             <span>CSS</span>, 
@@ -134,36 +201,45 @@
             <span>React</span>
         </p>
         <div style="margin-top:1.5rem;">
-            <a href="https://github.com/bharathhack77" class="github" style="display:inline-block; margin-right:1rem; padding:0.6rem 1.5rem; border-radius:999px; box-shadow:0 2px 8px rgba(17,24,39,0.12); text-decoration:none;">GitHub</a>
-            <a href="http://www.linkedin.com/in/bharath-kumar-8a2481254" class="linkedin" style="display:inline-block; padding:0.6rem 1.5rem; border-radius:999px; box-shadow:0 2px 8px rgba(37,99,235,0.12); text-decoration:none;">LinkedIn</a>
+            <a href="https://github.com/bharathhack77" class="github"><i class="fab fa-github"></i> GitHub</a>
+            <a href="http://www.linkedin.com/in/bharath-kumar-8a2481254" class="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
         </div>
     </section>
 
     <!-- About -->
-    <section id="about">
-        <h3 style="font-size:1.5rem; font-weight:700;">About Me</h3>
+    <section id="about" data-aos="fade-up">
+        <h3>About Me</h3>
         <p>
-            I’m <span style="font-weight:600;">Bharath Kumar</span>, currently pursuing B.E. in Cyber Security. I’m passionate about front-end development and aspire to build efficient, secure, and engaging applications. My goal is to grow as a software developer, learning continuously and building impactful tech solutions.
+            I’m <span style="font-weight:600;">Bharath Kumar</span>, currently pursuing B.E. in Cyber Security. I’m passionate about front-end development and aspire to build efficient, secure, and engaging applications.<br>
+            My goal is to grow as a software developer, learning continuously and building impactful tech solutions.
         </p>
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="bg1">
-        <h3 style="font-size:1.5rem; font-weight:700;">Projects</h3>
+    <section id="projects" class="bg1" data-aos="zoom-in">
+        <h3>Projects</h3>
         <div>
-            <div class="project-card">
-                <h4 style="font-size:1.2rem; font-weight:600; color:#3b82f6;">School Management System</h4>
-                <p>Created a web app to manage student attendance, generate reports, and send email alerts. Reduced manual effort by 50%.</p>
-                <p style="font-size:0.95rem; color:#22223b;">Tech Stack: 
+            <div class="project-card" data-aos="fade-up">
+                <h4 style="font-size:1.19rem; font-weight:600; color:#3b82f6;">
+                    <i class="fa-solid fa-school fa-fw"></i> School Management System
+                </h4>
+                <p>
+                    Created a web app to manage student attendance, generate reports, and send email alerts. Reduced manual effort by 50%.
+                </p>
+                <p style="font-size:0.97rem; color:#22223b;">Tech Stack: 
                     <span>HTML</span>, 
                     <span>CSS</span>, 
                     <span>JavaScript</span>
                 </p>
             </div>
-            <div class="project-card">
-                <h4 style="font-size:1.2rem; font-weight:600; color:#3b82f6;">Snake Game</h4>
-                <p>A browser-based snake game built with HTML5 Canvas and JavaScript. Focused on game logic and smooth animations.</p>
-                <p style="font-size:0.95rem; color:#22223b;">Tech Stack: 
+            <div class="project-card" data-aos="fade-up" data-aos-delay="80">
+                <h4 style="font-size:1.19rem; font-weight:600; color:#3b82f6;">
+                    <i class="fa-solid fa-gamepad fa-fw"></i> Snake Game
+                </h4>
+                <p>
+                    A browser-based snake game built with HTML5 Canvas and JavaScript. Focused on game logic and smooth animations.
+                </p>
+                <p style="font-size:0.97rem; color:#22223b;">Tech Stack: 
                     <span>HTML</span>, 
                     <span>CSS</span>, 
                     <span>JavaScript</span>
@@ -173,12 +249,12 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills">
-        <h3 style="font-size:1.5rem; font-weight:700;">Skills</h3>
+    <section id="skills" data-aos="flip-right">
+        <h3>Skills</h3>
         <div class="skills-grid">
             <div class="skills-card">
-                <h4 style="font-weight:600;">Technical Skills</h4>
-                <ul style="margin-left:1.2rem; list-style:disc;">
+                <h4 style="font-weight:600; color:#2563eb;"><i class="fa-solid fa-laptop-code"></i> Technical Skills</h4>
+                <ul>
                     <li>C, C++, Java (Basic)</li>
                     <li>HTML, CSS, JavaScript, React.js</li>
                     <li>Node.js, MySQL</li>
@@ -186,8 +262,8 @@
                 </ul>
             </div>
             <div class="skills-card soft">
-                <h4 style="font-weight:600;">Soft Skills</h4>
-                <ul style="margin-left:1.2rem; list-style:disc;">
+                <h4 style="font-weight:600; color:#2563eb;"><i class="fa-solid fa-people-group"></i> Soft Skills</h4>
+                <ul>
                     <li>Team Management</li>
                     <li>Problem Solving</li>
                     <li>Collaboration</li>
@@ -198,9 +274,9 @@
     </section>
 
     <!-- Education -->
-    <section id="education" class="bg2">
-        <h3 style="font-size:1.5rem; font-weight:700;">Education</h3>
-        <ul style="margin-left:1.2rem; list-style:disc;">
+    <section id="education" class="bg2" data-aos="fade-left">
+        <h3>Education</h3>
+        <ul>
             <li><span style="font-weight:600;">BE - Cyber Security</span>, Karpagam Academy (2026), CGPA: 7.0*</li>
             <li><span style="font-weight:600;">HSC</span> - VIB Matric Hr. Sec. School, 51%</li>
             <li><span style="font-weight:600;">SSLC</span> - VIB Matric Hr. Sec. School, 54%</li>
@@ -208,10 +284,10 @@
     </section>
 
     <!-- Certificates & Internship -->
-    <section>
-        <h3 style="font-size:1.5rem; font-weight:700;">Certificates & Internship</h3>
-        <ul style="margin-left:1.2rem; list-style:disc;">
-            <li><span style="font-weight:600;">Internship:</span> Front-end at Pantech e-learning (15 days)</li>
+    <section data-aos="fade-right">
+        <h3>Certificates & Internship</h3>
+        <ul>
+            <li><b>Internship:</b> Front-end at Pantech e-learning (15 days)</li>
             <li>C, C++, Python - May 2022</li>
             <li>Python - Infosys Springboard (2023)</li>
             <li>Java - Scaler (2025)</li>
@@ -222,15 +298,45 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="hero" style="margin-top:2rem;">
-        <h3 style="font-size:1.5rem; font-weight:700;">Contact Me</h3>
-        <p>Email: <a href="mailto:kumarbharath9537@gmail.com" style="color:#3b82f6; text-decoration:underline; font-weight:600;">kumarbharath9537@gmail.com</a></p>
-        <p>Phone: <span style="color:#3b82f6; font-weight:600;">+91 63810 50448</span></p>
-        <p>Instagram: <span style="color:#3b82f6; font-weight:600;">@bharathkumar.-007</span></p>
+    <section id="contact" class="hero" style="margin-top:2rem; margin-bottom:0;" data-aos="zoom-in-up">
+        <h3>Contact Me</h3>
+        <p><i class="fas fa-envelope fa-fw"></i> 
+            <a href="mailto:kumarbharath9537@gmail.com" style="color:#3b82f6; text-decoration:underline; font-weight:600;">
+            kumarbharath9537@gmail.com</a>
+        </p>
+        <p><i class="fas fa-phone fa-fw"></i> 
+            <span style="color:#3b82f6; font-weight:600;">+91 63810 50448</span>
+        </p>
+        <p><i class="fab fa-instagram fa-fw"></i>
+            <span style="color:#3b82f6; font-weight:600;">@bharathkumar.-007</span>
+        </p>
     </section>
 
     <footer>
-        &copy; 2025 Bharath Kumar j m. All rights reserved.
+        &copy; 2025 Bharath Kumar J M. All rights reserved.
     </footer>
+
+    <!-- Animated subtitle script -->
+    <script>
+    const roles = ['Front-end Enthusiast', 'React Developer', 'Problem Solver', 'Cyber Security Learner'];
+    let el = document.getElementById('text-typing');
+    let roleIdx = 0, charIdx = 0;
+    function typeWriter() {
+        if (!el) return;
+        el.innerHTML = roles[roleIdx].substring(0, charIdx) + '<span style="color:#3b82f6; font-weight:bold;">|</span>';
+        if (++charIdx <= roles[roleIdx].length) {
+            setTimeout(typeWriter, 74);
+        } else {
+            setTimeout(() => {
+                charIdx = 0; roleIdx = (roleIdx+1) % roles.length;
+                typeWriter();
+            }, 1000);
+        }
+    }
+    window.onload = typeWriter;
+    </script>
+    <!-- AOS scroll animation JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once:true, duration:700 });</script>
 </body>
 </html>
