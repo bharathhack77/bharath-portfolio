@@ -2,25 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Bharath Kumar | Portfolio</title>
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <!-- AOS library for scroll animations -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
     <style>
         body {
-            background: linear-gradient(-45deg, #f0f6ff, #e6f0fd, #dbeafe, #bfdbfe);
+            margin: 0;
+            background: linear-gradient(-45deg, #f0f6ff, #e6f0fd, #dbeafe, #bfdbfe, #fbbf24 120%);
             background-size: 700% 700%;
             animation: gradientBG 18s ease infinite;
             color: #22223b;
             font-family: 'Segoe UI', 'Arial', sans-serif;
+            overflow-x: hidden;
         }
         @keyframes gradientBG {
             0% {background-position:0% 50%;}
             50% {background-position:100% 50%;}
             100% {background-position:0% 50%;}
         }
+
+        /* Floating geometric SVGs */
+        .bg-svg {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.25;
+            animation: floatShape 13s linear infinite alternate;
+        }
+        .bg-svg1 { left: 10vw; top: 18vh; width: 90px; animation-delay: 0s;}
+        .bg-svg2 { right: 9vw; top: 48vh; width: 120px; animation-delay: 2.5s; transform: rotate(18deg);}
+        .bg-svg3 { left: 60vw; top: 70vh; width: 70px; animation-delay: 3.7s; transform: rotate(-5deg); }
+        .bg-svg4 { right: 8vw; top: 5vh; width: 70px; animation-delay: 6s;}
+        @keyframes floatShape {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(25px) scale(1.08);}
+        }
+
+        /* Blobs from earlier */
+        .hero-bg-blob, .hero-bg-blob2 {
+            position: fixed;
+            z-index: 0;
+            border-radius: 50%;
+            opacity: 0.13;
+            filter: blur(35px);
+            pointer-events: none;
+            animation: blobMove 17s infinite alternate;
+        }
+        .hero-bg-blob {
+            background: linear-gradient(135deg, #60a5fa 40%, #818cf8 100%);
+            width: 480px; height: 340px; top: -80px; left: -160px;
+        }
+        .hero-bg-blob2 {
+            background: linear-gradient(120deg, #f472b6 10%, #fbbf24 100%);
+            width: 340px; height: 230px; top: 65vh; left: 70vw; animation-delay: 2.7s;
+        }
+        @keyframes blobMove {
+            0% { transform: translateY(0) scale(1) rotate(2deg);}
+            100% { transform: translateY(55px) scale(1.14) rotate(14deg);}
+        }
+
+        /* Wavy divider SVG (below hero) */
+        .wavy-divider { width: 100vw; background: none; border: none; display: block; margin: 0; padding: 0; }
+
         header {
             background: #3b82f6;
             box-shadow: 0 2px 8px rgba(59,130,246,0.15);
@@ -32,8 +78,27 @@
         }
         header h1 {
             color: #fff;
-            font-size:2rem; 
+            font-size:2rem;
             font-weight:800;
+            letter-spacing:0.02em;
+            background: linear-gradient(75deg, #fff 40%, #fbbf24 200%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-flex; align-items: center;
+        }
+        .wavehand-emoji {
+            font-size:1.6rem;
+            margin-left:.19em;
+            animation: waveHand 2s infinite;
+            transform-origin: 70% 70%;
+        }
+        @keyframes waveHand {
+            0% { transform: rotate(0deg);}
+            10% { transform: rotate(-24deg);}
+            22% { transform: rotate(23deg);}
+            35% { transform: rotate(-10deg);}
+            50% { transform: rotate(0deg);}
+            100% { transform: rotate(0deg);}
         }
         nav a {
             color: #fff;
@@ -41,11 +106,14 @@
             transition: color 0.2s;
             margin-right:1.2rem;
             text-decoration: none;
+            letter-spacing: .02em;
         }
         nav a:last-child {margin-right:0;}
         nav a:hover {
-            color: #22223b;
+            color: #fbbf24;
+            text-shadow:0 3px 10px #fbbf2422;
         }
+
         .hero {
             background: #e6f0fdcc;
             box-shadow: 0 4px 24px rgba(59,130,246,0.08);
@@ -53,15 +121,17 @@
             text-align: center;
             position: relative;
             margin-bottom: 0;
+            overflow: visible;
         }
         .hero h2 {
             color: #3b82f6;
-            font-size:2.3rem;
-            font-weight:800;
-            margin-bottom: .7rem;
+            font-size: 2.45rem;
+            font-weight: 900;
+            letter-spacing: .03em;
+            margin-top:0;
         }
         .hero .sub-typing {
-            font-size: 1.13rem;
+            font-size: 1.12rem;
             color: #1e293b;
             min-height: 1.28em;
             margin-bottom: 1rem;
@@ -72,32 +142,64 @@
             font-weight: bold;
             color: #3b82f6;
         }
-        .hero .github, .hero .linkedin {
-            background: #3b82f6;
+        .animated-btn {
+            background: linear-gradient(90deg, #3b82f6 70%, #60a5fa 100%);
             color: #fff;
             display:inline-block;
             margin:0 0.6rem;
-            padding:0.6rem 1.5rem;
+            padding:0.6rem 1.65rem;
             border-radius:999px;
-            box-shadow:0 2px 8px rgba(17,24,39,0.12);
+            box-shadow:0 6px 16px rgba(59,130,246,0.16),0 2px 0 #fff7 inset;
             text-decoration:none;
-            font-weight: 600;
-            transition: background .2s, transform .17s;
-            font-size: 1.11rem;
+            font-weight: 700;
+            font-size: 1.13rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform .16s, box-shadow .2s, background .14s;
         }
-        .hero .github:hover, .hero .linkedin:hover {
-            background: #2563eb;
-            transform: translateY(-2px) scale(1.05);
+        .animated-btn span.arrow {
+            display: inline-block; margin-left: 12px;
+            transition: transform .23s cubic-bezier(.8,.3,.45,1.21);
+            animation: rightwiggle 1.7s infinite linear;
         }
+        @keyframes rightwiggle {
+            0%, 80%,100%{transform:translateX(0);}
+            90%{transform:translateX(4px);}
+        }
+        .animated-btn::after {
+            content:"";
+            position: absolute; left:0; top:0; right:0; bottom:0;
+            background: linear-gradient(120deg,rgba(255,255,255,0.14) 40%, transparent 70%);
+            opacity: .7; pointer-events: none; transition: opacity .15s;
+        }
+        .animated-btn:hover {
+            background: linear-gradient(100deg, #fbbf24 44%, #4f46e5 98%);
+            transform: scale(1.08) translateY(-2px);
+            box-shadow:0 20px 45px rgba(59,130,246,0.23);
+        }
+        .animated-btn:hover span.arrow {
+            transform: translateX(7px) scale(1.23) rotate(15deg);
+        }
+        .animated-btn:hover::after { opacity: 1;}
+
+        .about-glass {
+            background: rgba(255,255,255,0.86);
+            backdrop-filter: blur(13px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 46px 0 rgba(59,130,246, 0.13);
+            animation: appearUp 1.2s;
+        }
+        @keyframes appearUp { from{opacity:0; transform:translateY(44px);} to{opacity:1;transform:none;} }
+
         section {
             border-radius: 1rem;
-            box-shadow: 0 6px 40px rgba(59,130,246,0.10);
+            box-shadow: 0 6px 40px rgba(59,130,246,0.11);
             margin-top: 2.3rem;
             padding: 2.5rem 1.5rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 820px;
+            margin-left: auto; margin-right: auto;
             background: #fff;
+            z-index: 3; position:relative; overflow:visible;
         }
         section.bg1, section.bg2 {
             background: #e6f0fd;
@@ -106,24 +208,74 @@
             border-left: 5px solid #3b82f6;
             padding-left: .7em;
             color: #3b82f6;
-            font-size:1.5rem;
+            font-size:1.51rem;
             font-weight:700;
             margin-bottom:1.35rem;
             margin-top:.34rem;
         }
+
+        /* --- Project Card FLIP with animated background on hover --- */
         .project-card {
-            background: rgba(255,255,255,0.96);
-            border-radius: 0.75rem;
-            box-shadow: 0 2px 12px rgba(59,130,246,0.08);
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.5rem;
-            transition: box-shadow 0.2s, transform .23s;
+            perspective: 1000px;
             position: relative;
+            min-height: 112px;
+            overflow:visible;
+            margin-bottom: 2rem;
         }
-        .project-card:hover {
-            box-shadow: 0 10px 32px rgba(59,130,246,0.15);
-            transform: translateY(-6px) scale(1.03) rotate(-1deg);
+        .card-inner {
+            transition: transform 0.7s cubic-bezier(.4,2,.7,.7);
+            transform-style: preserve-3d;
+            position: relative;
+            min-height: 112px;
+            height:100%;
         }
+        .project-card:hover .card-inner {
+            transform: rotateY(180deg) scale(1.045);
+        }
+        .card-front, .card-back {
+            background:rgba(255,255,255,0.97);
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 12px rgba(59,130,246,0.09);
+            padding: 1rem 1.2rem;
+            position: absolute;
+            width: 100%; height: 100%;
+            left:0; top:0;
+            backface-visibility: hidden;
+            transition: box-shadow 0.2s, transform .23s, background .41s cubic-bezier(.9,.1,.19,1.24);
+        }
+        .project-card .card-front {
+            /* Animated background on hover */
+            background: linear-gradient(120deg,#e0e7fd 0%,#fef9c3 100%);
+            transition: background .4s cubic-bezier(.6,1.4,.8,1.1);
+        }
+        .project-card:hover .card-front {
+            background: linear-gradient(110deg,#f3f7fa 50%, #fde68a 100%);
+        }
+        .card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(120deg,#faf4ea 60%,#bfdbfe 100%);
+            color: #2563eb;
+            display: flex;
+            align-items: center; justify-content: center;
+            font-weight: bold;
+            font-size: 1.13rem;
+            text-align: center;
+            letter-spacing:0.36px;
+            box-shadow: 0 9px 25px #fbbf2440;
+            animation: cardPulse 2.7s infinite linear alternate;
+        }
+        @keyframes cardPulse {
+            0% { filter: brightness(1);}
+            80% { filter: brightness(1.03);}
+            100% { filter: brightness(1.13);}
+        }
+        /* Project icons bounce a bit on hover */
+        .card-front i, .skills-card i {
+            transition: transform .24s cubic-bezier(.7,.25,.33,1.41);
+            display: inline-block;
+        }
+        .project-card:hover .card-front i,
+        .skills-card:hover i { transform: scale(1.2) rotate(-8deg);}
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -133,12 +285,13 @@
             background: #e6f0fd;
             border-radius: 0.75rem;
             padding: 1rem 1.25rem;
-            box-shadow: 0 1px 8px rgba(59,130,246,0.08);
-            transition: box-shadow 0.2s, transform .2s;
+            box-shadow: 0 1px 8px rgba(59,130,246,0.11);
+            transition: box-shadow 0.18s, transform .22s, background .31s;
         }
         .skills-card:hover, .skills-card.soft:hover {
-            box-shadow: 0 6px 32px rgba(59,130,246,0.10);
-            transform: scale(1.025) translateY(-3px);
+            box-shadow: 0 6px 32px rgba(59,130,246,0.13);
+            transform: scale(1.028) translateY(-3px);
+            background:linear-gradient(100deg,#fce7f3 30%, #e0e7fd 100%);
         }
         ul {padding-left:1.2em;}
         li {margin-bottom:0.25em;}
@@ -149,20 +302,38 @@
             padding: 1.17rem 0;
             margin-top: 2.5rem;
             border-radius: 1rem 1rem 0 0;
-            box-shadow: 0 -2px 16px rgba(59,130,246,0.12);
-            font-size: 1.1rem;
-            letter-spacing: 0.4px;
+            box-shadow: 0 -2px 16px rgba(59,130,246,0.19);
+            font-size: 1.13rem;
+            letter-spacing: 0.42px;
         }
+
         /* For icons inside contact and project/skills sections */
         .fa-li {
             color:#3b82f6;
             margin-right:.42em;
         }
-        /* Responsive Design */
+        /* -- Section micro-anim bubbles (decorative) -- */
+        .decor-bubble {
+            position: absolute;
+            border-radius:50%;
+            pointer-events:none;
+            opacity:.13;
+            z-index:0;
+            animation: bubFloat 8s infinite alternate;
+        }
+        .bubble1 { width:38px; height:38px; left:-36px; bottom:25px; background:#fbbf24; animation-delay:.2s;}
+        .bubble2 { width:23px; height:23px; left:95%; bottom:-13px; background:#f472b6; animation-delay:.9s;}
+        .bubble3 { width:17px; height:17px; left:88%; top:-10px; background:#60a5fa; animation-delay:.3s;}
+        .bubble4 { width:24px; height:24px; left:-20px; top:18px; background:#818cf8; animation-delay:1.2s;}
+        @keyframes bubFloat {
+            0%{ transform: translateY(0);}
+            100%{ transform: translateY(22px);}
+        }
+
         @media (max-width: 900px) {
             section, .hero {max-width:97vw;}
             .skills-grid {grid-template-columns: 1fr;}
-            header > div {flex-direction:column; gap:.6rem;}
+            header > div {flex-direction:column; gap:.55rem;}
             header{padding:1.1rem .3rem;}
         }
         @media (max-width: 700px) {
@@ -170,13 +341,30 @@
             section {padding:1.2rem .2rem;}
             .hero {padding:2.3rem .1rem 1.3rem .1rem;}
         }
+        /* Hide the canvas for small screens */
+        @media(max-width:700px){
+            #stars-canvas{display:none;}
+            .bg-svg1,.bg-svg2,.bg-svg3,.bg-svg4{display:none;}
+        }
     </style>
 </head>
 <body>
+    <!-- Animated SVG Shapes Background -->
+    <svg class="bg-svg bg-svg1" viewBox="0 0 60 60"><circle fill="#818cf8" cx="30" cy="30" r="30"/></svg>
+    <svg class="bg-svg bg-svg2" viewBox="0 0 88 88"><rect fill="#fbbf24" x="0" y="0" width="88" height="88" rx="22"/></svg>
+    <svg class="bg-svg bg-svg3" viewBox="0 0 60 60"><polygon fill="#f472b6" points="30,0 60,60 0,60"/></svg>
+    <svg class="bg-svg bg-svg4" viewBox="0 0 60 60"><ellipse fill="#60a5fa" cx="30" cy="30" rx="24" ry="30"/></svg>
+    <!-- Blobs -->
+    <div class="hero-bg-blob"></div>
+    <div class="hero-bg-blob2"></div>
+
     <!-- Header -->
     <header>
         <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-            <h1>Bharath Kumar J M</h1>
+            <h1>
+                Bharath Kumar J M
+                <span class="wavehand-emoji">👋</span>
+            </h1>
             <nav>
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
@@ -188,26 +376,38 @@
     </header>
 
     <!-- Hero -->
-    <section class="hero" data-aos="fade-down">
-        <h2>Aspiring Software Developer</h2>
-        <p class="sub-typing">
+    <section class="hero" data-aos="fade-down" data-aos-easing="ease-out-cubic">
+        <canvas id="stars-canvas"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+        <h2 data-aos="zoom-in-down" style="position: relative; z-index:2;">
+            Aspiring Software Developer
+        </h2>
+        <p class="sub-typing" style="position:relative;z-index:2;">
             <span id="text-typing"></span>
         </p>
-        <p style="font-size:1.1rem; color:#22223b;">
-            Crafting user-friendly applications with 
-            <span>HTML</span>, 
-            <span>CSS</span>, 
-            <span>JS</span> & 
-            <span>React</span>
+        <p style="font-size:1.1rem; color:#22223b; position:relative;z-index:2;">
+            Crafting user-friendly applications with
+            <span>HTML</span>, <span>CSS</span>, <span>JS</span> & <span>React</span>
         </p>
-        <div style="margin-top:1.5rem;">
-            <a href="https://github.com/bharathhack77" class="github"><i class="fab fa-github"></i> GitHub</a>
-            <a href="http://www.linkedin.com/in/bharath-kumar-8a2481254" class="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <div style="margin-top:1.5rem; z-index:1; position:relative;">
+            <a href="https://github.com/bharathhack77" class="animated-btn" target="_blank">
+                <i class="fab fa-github"></i>
+                GitHub <span class="arrow">→</span>
+            </a>
+            <a href="http://www.linkedin.com/in/bharath-kumar-8a2481254" class="animated-btn" target="_blank">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn <span class="arrow">→</span>
+            </a>
         </div>
     </section>
 
+    <!-- SVG Wavy Divider -->
+    <svg class="wavy-divider" viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#e6f0fd" fill-opacity="1" d="M0,0L80,10.7C160,21,320,43,480,48C640,54,800,44,960,29.3C1120,16,1280,10.7,1360,8L1440,6V60H1360C1280,60,1120,60,960,60C800,60,640,60,480,60C320,60,160,60,80,60H0V0Z"></path></svg>
+
     <!-- About -->
-    <section id="about" data-aos="fade-up">
+    <section id="about" class="about-glass" data-aos="zoom-in-up">
+        <div class="decor-bubble bubble1"></div>
+        <div class="decor-bubble bubble2"></div>
         <h3>About Me</h3>
         <p>
             I’m <span style="font-weight:600;">Bharath Kumar</span>, currently pursuing B.E. in Cyber Security. I’m passionate about front-end development and aspire to build efficient, secure, and engaging applications.<br>
@@ -216,44 +416,60 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="bg1" data-aos="zoom-in">
+    <section id="projects" class="bg1" data-aos="zoom-in" data-aos-delay="50">
+        <div class="decor-bubble bubble3"></div>
         <h3>Projects</h3>
         <div>
-            <div class="project-card" data-aos="fade-up">
-                <h4 style="font-size:1.19rem; font-weight:600; color:#3b82f6;">
-                    <i class="fa-solid fa-school fa-fw"></i> School Management System
-                </h4>
-                <p>
-                    Created a web app to manage student attendance, generate reports, and send email alerts. Reduced manual effort by 50%.
-                </p>
-                <p style="font-size:0.97rem; color:#22223b;">Tech Stack: 
-                    <span>HTML</span>, 
-                    <span>CSS</span>, 
-                    <span>JavaScript</span>
-                </p>
+            <div class="project-card" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h4 style="font-size:1.19rem; font-weight:600; color:#3b82f6;">
+                            <i class="fa-solid fa-school fa-fw"></i> School Management System
+                        </h4>
+                        <p>
+                            Created a web app to manage student attendance, generate reports, and send email alerts. Reduced manual effort by 50%.
+                        </p>
+                        <p style="font-size:0.97rem; color:#22223b;">Tech Stack:
+                            <span>HTML</span>,
+                            <span>CSS</span>,
+                            <span>JavaScript</span>
+                        </p>
+                    </div>
+                    <div class="card-back">
+                        🚀 50% less manual work! <br> See code on <b>GitHub</b> 🌟
+                    </div>
+                </div>
             </div>
-            <div class="project-card" data-aos="fade-up" data-aos-delay="80">
-                <h4 style="font-size:1.19rem; font-weight:600; color:#3b82f6;">
-                    <i class="fa-solid fa-gamepad fa-fw"></i> Snake Game
-                </h4>
-                <p>
-                    A browser-based snake game built with HTML5 Canvas and JavaScript. Focused on game logic and smooth animations.
-                </p>
-                <p style="font-size:0.97rem; color:#22223b;">Tech Stack: 
-                    <span>HTML</span>, 
-                    <span>CSS</span>, 
-                    <span>JavaScript</span>
-                </p>
+            <div class="project-card" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h4 style="font-size:1.19rem; font-weight:600; color:#3b82f6;">
+                            <i class="fa-solid fa-gamepad fa-fw"></i> Snake Game
+                        </h4>
+                        <p>
+                            A browser-based snake game built with HTML5 Canvas and JavaScript. Focused on game logic and smooth animations.
+                        </p>
+                        <p style="font-size:0.97rem; color:#22223b;">Tech Stack:
+                            <span>HTML</span>, <span>CSS</span>, <span>JavaScript</span>
+                        </p>
+                    </div>
+                    <div class="card-back">
+                        🎮 Play with arrow keys! <br> Fun and fast <span style="color:#f472b6;">animations</span> 🍭
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills -->
-    <section id="skills" data-aos="flip-right">
+    <section id="skills" data-aos="flip-left" data-aos-delay="180">
+        <div class="decor-bubble bubble4"></div>
         <h3>Skills</h3>
         <div class="skills-grid">
-            <div class="skills-card">
-                <h4 style="font-weight:600; color:#2563eb;"><i class="fa-solid fa-laptop-code"></i> Technical Skills</h4>
+            <div class="skills-card" data-aos="fade-right" data-aos-delay="200">
+                <h4 style="font-weight:600; color:#2563eb;">
+                    <i class="fa-solid fa-laptop-code"></i> Technical Skills
+                </h4>
                 <ul>
                     <li>C, C++, Java (Basic)</li>
                     <li>HTML, CSS, JavaScript, React.js</li>
@@ -261,8 +477,10 @@
                     <li>Networking, Git, Excel</li>
                 </ul>
             </div>
-            <div class="skills-card soft">
-                <h4 style="font-weight:600; color:#2563eb;"><i class="fa-solid fa-people-group"></i> Soft Skills</h4>
+            <div class="skills-card soft" data-aos="fade-left" data-aos-delay="260">
+                <h4 style="font-weight:600; color:#2563eb;">
+                    <i class="fa-solid fa-people-group"></i> Soft Skills
+                </h4>
                 <ul>
                     <li>Team Management</li>
                     <li>Problem Solving</li>
@@ -274,7 +492,7 @@
     </section>
 
     <!-- Education -->
-    <section id="education" class="bg2" data-aos="fade-left">
+    <section id="education" class="bg2" data-aos="fade-up" data-aos-delay="220">
         <h3>Education</h3>
         <ul>
             <li><span style="font-weight:600;">BE - Cyber Security</span>, Karpagam Academy (2026), CGPA: 7.0*</li>
@@ -284,7 +502,7 @@
     </section>
 
     <!-- Certificates & Internship -->
-    <section data-aos="fade-right">
+    <section data-aos="fade-up" data-aos-delay="260">
         <h3>Certificates & Internship</h3>
         <ul>
             <li><b>Internship:</b> Front-end at Pantech e-learning (15 days)</li>
@@ -298,13 +516,13 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="hero" style="margin-top:2rem; margin-bottom:0;" data-aos="zoom-in-up">
+    <section id="contact" class="hero" style="margin-top:2rem; margin-bottom:0;" data-aos="zoom-in-up" data-aos-delay="350">
         <h3>Contact Me</h3>
-        <p><i class="fas fa-envelope fa-fw"></i> 
+        <p><i class="fas fa-envelope fa-fw"></i>
             <a href="mailto:kumarbharath9537@gmail.com" style="color:#3b82f6; text-decoration:underline; font-weight:600;">
             kumarbharath9537@gmail.com</a>
         </p>
-        <p><i class="fas fa-phone fa-fw"></i> 
+        <p><i class="fas fa-phone fa-fw"></i>
             <span style="color:#3b82f6; font-weight:600;">+91 63810 50448</span>
         </p>
         <p><i class="fab fa-instagram fa-fw"></i>
@@ -316,27 +534,87 @@
         &copy; 2025 Bharath Kumar J M. All rights reserved.
     </footer>
 
-    <!-- Animated subtitle script -->
+    <!-- Animated subtitle script with emoji cursor -->
     <script>
-    const roles = ['Front-end Enthusiast', 'React Developer', 'Problem Solver', 'Cyber Security Learner'];
+    const roles = [
+        'Front-end Enthusiast', '🚀 React Developer',
+        '👾 Problem Solver', 'Cyber Security Learner'
+    ];
+    const cursors = ['|', '💡', '✨', '🚀', '_'];
     let el = document.getElementById('text-typing');
-    let roleIdx = 0, charIdx = 0;
+    let roleIdx = 0, charIdx = 0, cursorIdx = 0;
     function typeWriter() {
         if (!el) return;
-        el.innerHTML = roles[roleIdx].substring(0, charIdx) + '<span style="color:#3b82f6; font-weight:bold;">|</span>';
+        let cursorChar = cursors[cursorIdx % cursors.length];
+        el.innerHTML = roles[roleIdx].substring(0, charIdx) +
+            `<span style="color:#3b82f6;font-weight:bold;">${cursorChar}</span>`;
+        cursorIdx++;
         if (++charIdx <= roles[roleIdx].length) {
-            setTimeout(typeWriter, 74);
+            setTimeout(typeWriter, 73);
         } else {
             setTimeout(() => {
-                charIdx = 0; roleIdx = (roleIdx+1) % roles.length;
+                charIdx = 0; roleIdx = (roleIdx + 1) % roles.length;
                 typeWriter();
-            }, 1000);
+            }, (roleIdx%2===0) ? 1100: 1700);
         }
     }
-    window.onload = typeWriter;
+    </script>
+
+    <!-- Stars in Hero Area -->
+    <script>
+    function animateStars() {
+        const canvas = document.getElementById('stars-canvas');
+        if (!canvas) return;
+        function updateSize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        updateSize();
+        window.addEventListener('resize',updateSize);
+
+        const ctx = canvas.getContext('2d');
+        let w = canvas.width, h = canvas.height;
+        let stars = [];
+        function starObj(){
+            return {
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: 1.5 + Math.random() * 2,
+                dx: Math.random() * 0.16,
+                dy: 0.035 + Math.random() * .13,
+                color: ['#3b82f6','#fbbf24','#f472b6'][Math.floor(Math.random()*3)]
+            }
+        }
+        for(let i=0; i<25; i++) stars.push(starObj());
+
+        setInterval(() => {
+            w=canvas.width; h=canvas.height;
+            ctx.clearRect(0, 0, w, h);
+            for (let s of stars) {
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+                ctx.fillStyle = s.color;
+                ctx.globalAlpha = Math.random() * 0.21 + 0.39;
+                ctx.shadowColor = "#60a5fa";
+                ctx.shadowBlur = 10;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                ctx.globalAlpha = 1;
+                s.y += s.dy; s.x += s.dx;
+                if (s.y > h) s.y = 0;
+                if (s.x > w) s.x = 0;
+            }
+        }, 33);
+    }
+    window.onload = function () {
+        typeWriter();
+        setTimeout(animateStars, 170);
+    }
     </script>
     <!-- AOS scroll animation JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init({ once:true, duration:700 });</script>
+    <script>
+        AOS.init({ once:true, duration:1000, easing:"cubic-bezier(.9,.21,.46,1.21)" });
+    </script>
 </body>
 </html>
